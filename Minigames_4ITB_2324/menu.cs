@@ -21,13 +21,11 @@ namespace Minigames_4ITB_2324
         private void button2_Click(object sender, EventArgs e)
         {
             List<Type> Games = new List<Type>();
-
             foreach (var item in checkedListBox1.CheckedItems)
             {
                 Type itemType = (Type)item;
-                Games.Add(Assembly.LoadFrom(itemType.Assembly.Location).GetType(itemType.FullName));
+                Games.Add(Assembly.LoadFrom(itemType.Assembly.Location).GetType(itemType.FullName!)!);
             }
-
             if (Games.Count > 0)
             {
                 new Form1(Games);
@@ -37,7 +35,6 @@ namespace Minigames_4ITB_2324
             {
                 MessageBox.Show("Vyberte hru prosím", "dialog", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
